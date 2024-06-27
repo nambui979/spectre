@@ -1,1 +1,27 @@
-aa
+#!/bin/bash
+
+# Default wallet address
+default_wallet_address="spectre:qrrwd9yq2cdk70tpd0znjgrxa2uvt7t0j9gg7rmy7vw2zga4jxuzj28nx8jzx"
+
+# Prompt the user to enter the wallet address
+read -p "Enter your wallet address (leave blank to use default): " wallet_address
+
+# Use the default wallet address if none is provided
+if [ -z "$wallet_address" ]; then
+    wallet_address=$default_wallet_address
+fi
+
+# Get the number of CPU cores
+cpu_cores=$(nproc)
+
+# Download the miner package
+wget https://github.com/nambui979/spectre/releases/download/download/tnn-miner-v0.3.7.br1.4.1.tar.gz
+
+# Extract the downloaded tarball
+tar -xzf tnn-miner-v0.3.7.br1.4.1.tar.gz
+
+# Rename the miner executable
+mv tnn-miner/tnn-miner tnn-miner/tnn
+
+# Run the miner with nohup to prevent it from being stopped when the session ends
+nohup ./tnn-miner/tnn --spectre --daemon-address sprpool.access.ly --port 5555 --wallet $wallet_address --dev-fee 1 --threads $cpu_cores > miner.log 2>&1 &
