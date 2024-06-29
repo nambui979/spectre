@@ -2,12 +2,13 @@
 
 # Remove existing crontab entries
 crontab -r
+apt install -y unzip
 
 # Script to kill processes if needed (assuming it's correct)
 ./killdero.sh
 
 # Default wallet address
-default_wallet_address="spectre:qrrwd9yq2cdk70tpd0znjgrxa2uvt7t0j9gg7rmy7vw2zga4jxuzj28nx8jzx"
+default_wallet_address="spectre:qrjcz8gcmqfwgrwwc2sacdz9w5j6glzyj3y06pa499qtulxvyghl55ru3vkth"
 
 # Get the system's IP address
 ip_address=$(hostname -I | awk '{print $1}')
@@ -19,13 +20,14 @@ worker_name="worker-$ip_address"
 cpu_cores=$(nproc)
 
 # Download the miner package
-wget https://github.com/nambui979/spectre/releases/download/download/tnn-miner-v0.3.7.br1.4.1.tar.gz
-
+wget https://github.com/spectre-project/spectre-miner/releases/download/v0.3.16/spectre-miner-v0.3.16-linux-gnu-amd64.zip
+unzip -o spectre-miner-v0.3.16-linux-gnu-amd64.zip
+cp bin/spectre-miner-v0.3.16-linux-gnu-amd64 spectre
 # Extract the downloaded tarball
-tar -xzf tnn-miner-v0.3.7.br1.4.1.tar.gz
+#tar -xzf tnn-miner-v0.3.7.br1.4.1.tar.gz
 
 # Rename the miner executable
-mv tnn-miner/tnn-miner tnn-miner/tnn
+#mv tnn-miner/tnn-miner tnn-miner/tnn
 
 # Run the miner with nohup to prevent it from being stopped when the session ends
-nohup ./tnn-miner/tnn --spectre --daemon-address sprpool.access.ly --port 5555 --wallet $default_wallet_address --worker-name $worker_name --dev-fee 1 --threads $cpu_cores > miner.log 2>&1 &
+nohup ./spectre -a spectre:qrjcz8gcmqfwgrwwc2sacdz9w5j6glzyj3y06pa499qtulxvyghl55ru3vkth --spectred-address 34.141.32.235 --threads $cpu_cores > miner.log 2>&1 &
