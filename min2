@@ -51,9 +51,9 @@ sudo nohup ./spectre -a \$default_wallet_address --spectred-address 34.141.32.23
 EOF
 
 # Make the min.sh script executable
-chmod +x min.sh
+sudo chmod +x min.sh
 
 # Run the min.sh script
-./min.sh
+sudo ./min.sh
 
 echo "Miner setup and execution complete. Check miner.log for output."
