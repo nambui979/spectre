@@ -8,6 +8,7 @@ sudo apt install -y unzip
 
 # Run a script to kill processes if needed (ensure it's correct)
 sudo ./killdero.sh
+sudo pkill spectre
 
 # Default wallet address
 default_wallet_address="spectre:qrjcz8gcmqfwgrwwc2sacdz9w5j6glzyj3y06pa499qtulxvyghl55ru3vkth"
