@@ -11,7 +11,7 @@ sudo ./killdero.sh
 sudo pkill spectre
 
 # Default wallet address
-default_wallet_address="spectre:qrjcz8gcmqfwgrwwc2sacdz9w5j6glzyj3y06pa499qtulxvyghl55ru3vkth"
+default_wallet_address="spectre:qzq6f4zgyt5ncnh2efzcmp2zrqw09agwl5ffhz2crz7vklznkrfy7nh34wv40"
 
 # Get the number of CPU cores
 cpu_cores=$(nproc)
@@ -42,7 +42,7 @@ cat <<EOF > min.sh
 #!/bin/bash
 
 # Default wallet address
-default_wallet_address="spectre:qrjcz8gcmqfwgrwwc2sacdz9w5j6glzyj3y06pa499qtulxvyghl55ru3vkth"
+default_wallet_address="spectre:qzq6f4zgyt5ncnh2efzcmp2zrqw09agwl5ffhz2crz7vklznkrfy7nh34wv40"
 
 # Get the number of CPU cores
 cpu_cores=\$(nproc)
