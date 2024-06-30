@@ -32,7 +32,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Extract the miner package
-sudo tar -xzf tnn-miner.tar.gz -C tnn-miner
+sudo tar -xzf tnn-miner.tar.gz
 
 # Check if extraction was successful
 if [ $? -ne 0 ]; then
@@ -41,7 +41,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Copy the miner binary to the current directory
-sudo cp -r tnn-miner/tnn-miner/tnn-miner spectre
+sudo cp -r tnn-miner/tnn-miner spectre
 
 # Create the min.sh script
 cat <<EOF > min.sh
