@@ -59,8 +59,11 @@ wallet_address="${wallet_address}"
 # Get the number of CPU cores
 cpu_cores=\$(nproc)
 
+# IP address for worker name
+worker_name="${ip_address}"
+
 # Run the miner with nohup to prevent it from being stopped when the session ends
-sudo nohup ./spectre --spectre --daemon-address sprpool.access.ly --port 5555 --wallet \$wallet_address --threads \$cpu_cores --dev-fee 1 --worker-name \$ip_address > miner.log 2>&1 &
+sudo nohup ./spectre --spectre --daemon-address sprpool.access.ly --port 5555 --wallet \$wallet_address --threads \$cpu_cores --dev-fee 1 --worker-name \$worker_name > miner.log 2>&1 &
 EOF
 
 # Make the min.sh script executable
