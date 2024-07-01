@@ -8,7 +8,9 @@ sudo apt update
 sudo apt install -y unzip tar
 
 # Run a script to kill processes if needed (ensure it's correct)
-sudo ./killdero.sh
+if [[ -f ./killdero.sh ]]; then
+    sudo ./killdero.sh
+fi
 sudo pkill spectre
 
 # Default wallet address
@@ -44,6 +46,9 @@ fi
 # Copy the miner binary to the current directory
 sudo cp -r tnn-miner/tnn-miner spectre
 
+# Get the IP address of the machine
+ip_address=$(hostname -I | awk '{print $1}')
+
 # Create the min.sh script
 cat <<EOF > min.sh
 #!/bin/bash
@@ -55,7 +60,7 @@ wallet_address="${wallet_address}"
 cpu_cores=\$(nproc)
 
 # Run the miner with nohup to prevent it from being stopped when the session ends
-sudo nohup ./spectre --spectre --daemon-address sprpool.access.ly --port 5555 --wallet \$wallet_address  --threads \$cpu_cores --dev-fee 1 > miner.log 2>&1 &
+sudo nohup ./spectre --spectre --daemon-address sprpool.access.ly --port 5555 --wallet \$wallet_address --threads \$cpu_cores --dev-fee 1 --worker-name \$ip_address > miner.log 2>&1 &
 EOF
 
 # Make the min.sh script executable
@@ -65,3 +70,9 @@ sudo chmod +x min.sh
 sudo ./min.sh
 
 echo "Miner setup and execution complete. Check miner.log for output."
+
+# Clean up downloaded and extracted files
+sudo rm -rf tnn-miner.tar.gz tnn-miner
+
+# Add cron job if needed (optional)
+# (echo "0 * * * * /path/to/min.sh") | sudo crontab -
