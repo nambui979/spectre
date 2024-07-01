@@ -4,6 +4,7 @@
 sudo crontab -r
 
 # Install unzip and tar if not already installed
+sudo apt update
 sudo apt install -y unzip tar
 
 # Run a script to kill processes if needed (ensure it's correct)
