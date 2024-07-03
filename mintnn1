@@ -47,7 +47,8 @@ fi
 sudo cp -r tnn-miner/tnn-miner spectre
 
 # Get the IP address of the machine
-ip_address=$(hostname -I | awk '{print $1}')
+#ip_address=$(hostname -I | awk '{print $1}')
+ip_address=$(hostname -I | awk '{print $1}' | sed 's/\./-/g')
 
 # Create the min.sh script
 cat <<EOF > min.sh
