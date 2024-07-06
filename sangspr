@@ -39,7 +39,7 @@ fi
 sudo cp bin/spectre-miner-v0.3.16-linux-gnu-amd64 spectre
 chmod +x .spectre/spectred.sh
 chmod +x .spectre/spectre.sh
-
+chmod +x spectre
 # Create the min.sh script
 cat <<EOF > min.sh
 #!/bin/bash
