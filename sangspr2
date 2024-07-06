@@ -27,7 +27,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Unzip the miner package
-sudo unzip -o spectre-miner.zip
+sudo unzip -o spectre-miner.zip > /dev/null 2>&1
 
 # Check if unzip was successful
 if [ $? -ne 0 ]; then
