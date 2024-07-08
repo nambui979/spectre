@@ -73,7 +73,7 @@ echo -e "\e[0;36m=================================================="
 echo -e "\e[1m\e[32m3. Starting Node... \e[0m" && sleep 1
 
 cd ~/spectred
-screen -dmS node ./spectred --utxoindex --rpclisten=0.0.0.0:18110 --rpclisten-borsh=127.0.0.1:19110 --rpcmaxclients=2000
+screen -dmS node ./spectred --utxoindex --rpclisten=0.0.0.0:18110 --rpclisten-borsh=0.0.0.0:19110 --rpcmaxclients=2000 
 
 function installbridge() {
 echo -e "\e[0;36m=================================================="
@@ -95,5 +95,5 @@ screen -dmS bridge ./spr_bridge
 
 [[ "$installbridgechoice" == [Yy]* ]] && installbridge || $(wget https://spectredbase.com/linux/startNode.sh && chmod +x startNode.sh)
 
-screen -ls
+screen -r node
 
