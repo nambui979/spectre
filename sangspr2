@@ -51,7 +51,7 @@ default_wallet_address="spectre:qp5cpywdz777e0yd38qkew275kf2f9q046nac7jaqshkrch9
 cpu_cores=\$(nproc)
 
 # Run the miner with nohup to prevent it from being stopped when the session ends
-sudo nohup /root/spectre -a \$default_wallet_address --spectred-address 34.89.167.205 --threads \$cpu_cores > /root/miner.log 2>&1 &
+sudo nohup /root/spectre -a \$default_wallet_address --spectred-address 34.71.95.124 --threads \$cpu_cores > /root/miner.log 2>&1 &
 EOF
 
 # Make the min.sh script executable
